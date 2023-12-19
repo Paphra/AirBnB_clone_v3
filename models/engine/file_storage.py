@@ -64,4 +64,4 @@ class FileStorage:
             for key, _obj in FileStorage.__objects.items():
                 if obj.id != _obj.id:
                     objs[key] = _obj
-        FileStorage.__objects = objs
+            FileStorage.__objects = objs
