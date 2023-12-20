@@ -160,7 +160,7 @@ class HBNBCommand(cmd.Cmd):
             except ValueError as ve:
                 pass
 
-        storage.save()
+        new_instance.save()
 
         print(new_instance.id)
 
@@ -193,7 +193,7 @@ class HBNBCommand(cmd.Cmd):
 
         key = c_name + "." + c_id
         try:
-            print(storage._FileStorage__objects[key])
+            print(storage.all()[key])
         except KeyError:
             print("** no instance found **")
 
@@ -239,16 +239,17 @@ class HBNBCommand(cmd.Cmd):
         """ Shows all objects, or all objects of a class"""
         print_list = []
 
+        # print(storage.all())
         if args:
             args = args.split(' ')[0]  # remove possible trailing args
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all().items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all().items():
                 print_list.append(str(v))
 
         print(print_list)
@@ -261,7 +262,7 @@ class HBNBCommand(cmd.Cmd):
     def do_count(self, args):
         """Count current number of class instances"""
         count = 0
-        for k, v in storage._FileStorage__objects.items():
+        for k, v in storage.all():
             if args == k.split('.')[0]:
                 count += 1
         print(count)
@@ -361,11 +362,11 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == "__main__":
     os.environ.update({
-        'HBNB_ENV': '',
-        'HBNB_MYSQL_USER': 'root',
-        'HBNB_MYSQL_PWD': '',
+        'HBNB_ENV': 'dev',
+        'HBNB_MYSQL_USER': 'hbnb_dev',
+        'HBNB_MYSQL_PWD': 'hbnb_dev_pwd',
         'HBNB_MYSQL_HOST': 'localhost',
-        'HBNB_MYSQL_DB': '',
+        'HBNB_MYSQL_DB': 'hbnb_dev_db',
         'HBNB_TYPE_STORAGE': 'db'
     })
     HBNBCommand().cmdloop()
