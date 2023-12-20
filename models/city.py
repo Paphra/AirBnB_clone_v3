@@ -27,3 +27,6 @@ class City(BaseModel, Base):
             for key, state in all_states.items():
                 if state.id == self.state_id:
                     return state
+
+    places = relationship(
+        'Place', back_populates='city', cascade='all,delete-orphan')
