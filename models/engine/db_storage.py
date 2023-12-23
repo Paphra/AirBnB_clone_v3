@@ -12,7 +12,7 @@ from models.place import Place
 from models.state import State
 from models.city import City
 # from models.amenity import Amenity
-# from models.review import Review
+from models.review import Review
 
 
 class DBStorage:
@@ -28,7 +28,7 @@ class DBStorage:
         'State': State,
         'City': City,
         # 'Amenity': Amenity,
-        # 'Review': Review
+        'Review': Review
     }
 
     def __init__(self):
