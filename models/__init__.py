@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This module instantiates an object of class FileStorage"""
+"""This module instantiates an object of class FileStorage
+"""
 import os
 
 if os.environ.get('HBNB_TYPE_STORAGE') == 'db':

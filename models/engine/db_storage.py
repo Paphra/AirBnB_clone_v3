@@ -11,7 +11,7 @@ from models.user import User
 from models.place import Place
 from models.state import State
 from models.city import City
-# from models.amenity import Amenity
+from models.amenity import Amenity
 from models.review import Review
 
 
@@ -27,7 +27,7 @@ class DBStorage:
         'Place': Place,
         'State': State,
         'City': City,
-        # 'Amenity': Amenity,
+        'Amenity': Amenity,
         'Review': Review
     }
 
