@@ -6,7 +6,7 @@ from fabric.api import local, env, put, run, sudo
 from datetime import datetime
 import os
 
-env.hosts = ['100.25.119.244', '54.89.107.222']
+# env.hosts = ['100.25.119.244', '54.89.107.222']
 
 
 def do_pack():
@@ -55,7 +55,7 @@ def do_deploy(archive_path):
             archive_filename))
         run("rm -rf /data/web_static/current")
         run("ln -s /data/web_static/releases/{}/ /data/web_static/current"
-                .format(archive_filename))
+            .format(archive_filename))
         print("New version deployed!")
         return True
     except Exception as e:
@@ -71,5 +71,11 @@ def deploy():
     path = do_pack()
     if path is None:
         return False
-    res = do_deploy(path)
-    return res;
+
+    env.host_string = '100.25.119.244'
+    if not do_deploy(path):
+        return False
+    env.host_string = '54.89.107.222'
+    if not do_deploy(path):
+        return False
+    return True
