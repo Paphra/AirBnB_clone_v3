@@ -53,13 +53,14 @@ def do_deploy(archive_path):
         run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/".format(
             archive_filename + ".tgz", archive_filename))
         run("rm /tmp/{}".format(archive_filename + ".tgz"))
-        run("mv /data/web_static/releases/{}/web_static/* \
-/data/web_static/releases/{}/".format(archive_filename, archive_filename))
+        run(("mv /data/web_static/releases/{}/web_static/*"
+            " /data/web_static/releases/{}/").format(
+                archive_filename, archive_filename))
         run("rm -rf /data/web_static/releases/{}/web_static".format(
             archive_filename))
         run("rm -rf /data/web_static/current")
-        run("ln -s /data/web_static/releases/{}/ /data/web_static/current"
-            .format(archive_filename))
+        run(("ln -s /data/web_static/releases/{}/"
+            " /data/web_static/current").format(archive_filename))
         print("New version deployed!")
         return True
     except Exception as e:
