@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""hello_route module
+"""hbnb_route module
 Starts a Flask web application
 """
 from flask import Flask
@@ -11,9 +11,17 @@ app = Flask(__name__)
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
     """hello_hbnb function
-    Defines what is returned by the home route
+    Defines what is return by / route
     """
     return 'Hello HBNB!'
+
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """hbnb function
+    Defines what is returned by /hbnb route
+    """
+    return 'HBNB'
 
 
 if __name__ == '__main__':
