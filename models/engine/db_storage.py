@@ -58,7 +58,10 @@ class DBStorage:
                     objs['{}.{}'.format(
                         item.__class__.__name__, item.id)] = item
         else:
-            items = self.__session.query(DBStorage.classes[cls]).all()
+            if type(cls) is str:
+                items = self.__session.query(self.classes[cls]).all()
+            else:
+                items = self.__session.query(cls).all()
             for item in items:
                 objs['{}.{}'.format(
                     item.__class__.__name__, item.id)] = item
@@ -89,3 +92,8 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         self.__session = scoped_session(
             sessionmaker(bind=self.__engine, expire_on_commit=False))
+
+    def close(self):
+        """ calls remove on the private session attribute
+        """
+        self.__session.remove()

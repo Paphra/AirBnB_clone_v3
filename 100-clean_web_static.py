@@ -78,3 +78,11 @@ def deploy():
         return False
 
     return do_deploy(path)
+
+
+def do_clean(number=0):
+    """do_clean function
+    Used to clean the archives
+    Returns:
+        Nothing
+    """
