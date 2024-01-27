@@ -53,6 +53,7 @@ class BaseModel:
                 else:
                     ret[key] = value
         ret['__class__'] = self.__class__.__name__
+        return ret
 
     def delete(self):
         """delete method
