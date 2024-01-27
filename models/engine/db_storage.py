@@ -56,7 +56,7 @@ class DBStorage:
                 items = self.__session.query(_cls).all()
                 for item in items:
                     objs['{}.{}'.format(
-                        item.__class__.__name__, item.id)] = item
+                        item.__class__.__name__, item.id)] = item.to_dict()
         else:
             if type(cls) is str:
                 items = self.__session.query(self.classes[cls]).all()
@@ -64,7 +64,7 @@ class DBStorage:
                 items = self.__session.query(cls).all()
             for item in items:
                 objs['{}.{}'.format(
-                    item.__class__.__name__, item.id)] = item
+                    item.__class__.__name__, item.id)] = item.to_dict()
         return objs
 
     def new(self, obj):
