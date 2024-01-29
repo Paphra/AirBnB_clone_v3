@@ -80,6 +80,7 @@ def states_list_route():
     """
     states_fetched = storage.all(State)
     states = [state for key, state in states_fetched.items()]
+    states = sorted(states, key=lambda x: x['name'])
     return render_template('7-states_list.html', states=states)
 
 
