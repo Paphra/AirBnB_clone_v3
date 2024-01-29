@@ -20,7 +20,7 @@ class State(BaseModel, Base):
             return relationship(
                 'City',
                 back_populates='state',
-                cascade='all,delete-orphan'
+                cascade='all, delete-orphan'
             )
         else:
             from models import storage

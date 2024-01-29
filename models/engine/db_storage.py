@@ -24,9 +24,9 @@ class DBStorage:
 
     classes = {
         'User': User,
-        'Place': Place,
         'State': State,
         'City': City,
+        'Place': Place,
         'Amenity': Amenity,
         'Review': Review
     }
@@ -91,7 +91,7 @@ class DBStorage:
         """
         Base.metadata.create_all(self.__engine)
         self.__session = scoped_session(
-            sessionmaker(bind=self.__engine, expire_on_commit=False))
+            sessionmaker(bind=self.__engine))
 
     def close(self):
         """ calls remove on the private session attribute
