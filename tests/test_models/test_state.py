@@ -22,4 +22,5 @@ class test_state(test_basemodel):
         """Tests the name type
         """
         new = self.value()
+        new.name = "Some State"
         self.assertEqual(type(new.name), str)

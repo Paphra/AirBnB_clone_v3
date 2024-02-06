@@ -22,4 +22,5 @@ class test_Amenity(test_basemodel):
         """Tests the name of the amenity
         """
         new = self.value()
+        new.name = "Some Name"
         self.assertEqual(type(new.name), str)

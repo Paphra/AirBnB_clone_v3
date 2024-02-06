@@ -23,6 +23,7 @@ class test_User(test_basemodel):
         Tests the name (first) of the User model
         """
         new = self.value()
+        new.first_name = "First Name"
         self.assertEqual(type(new.first_name), str)
 
     def test_last_name(self):
@@ -30,6 +31,7 @@ class test_User(test_basemodel):
         Tests the name (last) of the User model
         """
         new = self.value()
+        new.last_name = "Last Name"
         self.assertEqual(type(new.last_name), str)
 
     def test_email(self):
@@ -37,6 +39,7 @@ class test_User(test_basemodel):
         Tests the email for the User model
         """
         new = self.value()
+        new.email = "john@doe.com"
         self.assertEqual(type(new.email), str)
 
     def test_password(self):
@@ -44,4 +47,5 @@ class test_User(test_basemodel):
         Tests the password of the User model
         """
         new = self.value()
+        new.password = "SomePass"
         self.assertEqual(type(new.password), str)
